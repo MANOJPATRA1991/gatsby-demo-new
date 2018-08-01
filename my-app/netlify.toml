@@ -1,0 +1,21 @@
+[Settings]
+ID = "123456789"
+
+# Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
+
+[build]
+  # This is the directory to change to before starting a build.
+  base    = "my-app/gatsby-site/"
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "my-app/gatsby-site/public/"
+  # This will be your default build command
+  command = "gatsby build"
+  # This is where we will look for your lambda functions
+  functions = "my-app/gatsby-site/functions/"
+
+# Production context: All deploys from the Production branch set in your site's deploy settings will inherit these settings.
+[context.production]
+  publish = "my-app/gatsby-site/public/"
+  command = "gatsby build"
+  environment = { ACCESS_TOKEN = "super secret", NODE_ENV = "8.0.1" }
